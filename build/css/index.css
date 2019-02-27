@@ -1,0 +1,13 @@
+.aspect-ratio--1x1 {
+  padding-top: 100%;
+  position: relative; }
+
+.aspect-ratio--16x9 {
+  padding-top: 56.25%;
+  position: relative; }
+
+.aspect-ratio--3x2 {
+  padding-top: 66.66667%;
+  position: relative; }
+
+/*# sourceMappingURL=index.css.map */

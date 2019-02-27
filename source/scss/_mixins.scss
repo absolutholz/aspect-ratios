@@ -1,0 +1,23 @@
+// No. 3 => https://engageinteractive.co.uk/blog/top-10-scss-mixins
+
+// set $pseudo to true because when flex-basis alone defines the parent
+// width, the padding hack does not work as expected
+@mixin aspect-ratio-box($x, $y, $pseudo: false) {
+	$padding: unquote(( $y / $x ) * 100 + "%");
+
+	@if $pseudo {
+		// use before so that z-indexing is not required for simple layering
+		&::before {
+			content: "";
+			display: block;
+			padding-top: $padding;
+			width: 100%;
+		}
+	} @else {
+		padding-top: $padding;
+	}
+
+	position: relative;
+
+	@content;
+}

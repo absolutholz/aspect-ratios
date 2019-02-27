@@ -1,0 +1,33 @@
+@import "mixins";
+@import "variables";
+
+.aspect-ratio {
+	@each $ratio-key in ("1x1", "16x9", "3x2") {
+		&--#{$ratio-key} {
+			$ratio: map-get($aspect-ratios, $ratio-key);
+			@include aspect-ratio-box(map-get($ratio, "x"), map-get($ratio, "y"));
+		}
+	}
+}
+
+// .aspect-ratio {
+// 	&--1x1 {
+// 		@include aspect-ratio-box(1, 1);
+// 	}
+
+// 	&--2x1 {
+// 		@include aspect-ratio-box(2, 1);
+// 	}
+
+// 	&--3x1 {
+// 		@include aspect-ratio-box(3, 1);
+// 	}
+
+// 	&--16x9 {
+// 		@include aspect-ratio-box(16, 9);
+// 	}
+
+// 	&--3x4 {
+// 		@include aspect-ratio-box(3, 4);
+// 	}
+// }

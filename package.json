@@ -1,0 +1,29 @@
+{
+  "name": "aspect-ratios",
+  "version": "1.0.0",
+  "description": "Tools and methodology for using CSS to create block elements for well-known aspect ratios.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/absolutholz/aspect-ratios.git"
+  },
+  "author": "absolutholz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/absolutholz/aspect-ratios/issues"
+  },
+  "homepage": "https://github.com/absolutholz/aspect-ratios#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.4.9",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-prettyerror": "^1.2.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sass-glob": "^1.0.9",
+    "gulp-sass-lint": "^1.4.0",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.5"
+  }
+}
