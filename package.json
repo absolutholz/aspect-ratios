@@ -7,12 +7,13 @@
     "url": "git+https://github.com/absolutholz/aspect-ratios.git"
   },
   "author": "absolutholz",
-  "license": "ISC",
+  "license": "GPL-3.0+",
+  "main": "gulpfile.js",
   "bugs": {
     "url": "https://github.com/absolutholz/aspect-ratios/issues"
   },
   "homepage": "https://github.com/absolutholz/aspect-ratios#readme",
-  "devDependencies": {
+  "dependencies": {
     "autoprefixer": "^9.4.9",
     "cssnano": "^4.1.10",
     "gulp": "^4.0.0",
