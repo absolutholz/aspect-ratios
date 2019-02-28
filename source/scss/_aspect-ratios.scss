@@ -1,0 +1,13 @@
+///
+/// Create classes with opinionated selector names
+///
+/// @group Aspect Ratios
+/// @author absolutholz
+///
+.aspect-ratio {
+	@each $ratio-key, $ratio in $aspect-ratios {
+		&--#{$ratio-key} {
+			@include aspect-ratio-box(nth(map-get($ratio, "dimensions"), 1), nth(map-get($ratio, "dimensions"), 2));
+		}
+	}
+}

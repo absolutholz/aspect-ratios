@@ -1,0 +1,22 @@
+///
+/// Create a ratio map. Ideally not one already defined in the $aspect-ratios variable
+///
+/// @group Aspect Ratios
+/// @author absolutholz
+///
+/// @param {List} $dimensions - A list of x and y dimensions (ex: `1 1` or `16 9`)
+/// @param {String} $description [""] - A brief description of the ratio
+/// @param {String} $key [""] - The key for the generated map (ex: "1x1" or "16x9"). If an empty or no string is passed, one will be generated from the dimensions in the format `"[x]x[y]"`.
+///
+///	@return {Map} - ```($key: ("description": $description, "dimensions": $dimensions))```
+///
+@function create-ratio($dimensions, $description: "", $key: "") {
+	@if ($key == "") {
+		$key: "#{nth($dimensions, 1)}x#{nth($dimensions, 2)}";
+	}
+
+	@return ($key: (
+		"description": $description,
+		"dimensions": $dimensions,
+	));
+}

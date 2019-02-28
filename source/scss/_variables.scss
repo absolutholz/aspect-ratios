@@ -1,64 +1,59 @@
-// https://en.wikipedia.org/wiki/Aspect_ratio_(image)
+///
+/// Some standard apect ratios as defined on the linked wikipedia page
+///
+/// @group Aspect Ratios
+/// @author absolutholz
+///
+/// @link https://en.wikipedia.org/wiki/Aspect_ratio_(image)
+///
 $aspect-ratios: (
 	"1x1": (
 		"description": "1:1 - Square; Used in some social networks, and in few devices",
-		"x": 1,
-		"y": 1,
+		"dimensions": 1 1,
 	),
 
 	"5x4": (
 		"description": "5:4 - Early television & large-format computer monitors",
-		"x": 5,
-		"y": 4,
+		"dimensions": 5 4,
 	),
 
 	"4x3": (
 		"description": "4:3 - Traditional television & computer monitor standard",
-		"x": 4,
-		"y": 3,
+		"dimensions": 4 3,
 	),
 
 	"11x8": (
 		"description": "11:8 - Academy standard film aspect ratio",
-		"x": 11,
-		"y": 8,
+		"dimensions": 11 8,
 	),
 
 	"3x2": (
 		"description": "3:2 - Classic 35 mm still photographic film",
-		"x": 3,
-		"y": 2,
+		"dimensions": 3 2,
 	),
 
 	"16x10": (
 		"description": "16:10 - A common computer screen ratio",
-		"x": 16,
-		"y": 10,
+		"dimensions": 16 10,
 	),
 
 	"16x9": (
 		"description": "16:9 - HD video standard",
-		"x": 16,
-		"y": 9,
+		"dimensions": 16 9,
 	),
 
 	"golden": (
 		"description": "1.618:1 - The golden ratio",
-		"value": 100% * (1 / 1.618),
-		"x": 1.618,
-		"y": 1,
+		"dimensions": 1.618 1,
 	),
 
 	"silver": (
 		"description": "2.414:1 - The silver ratio",
-		"value": 100% * (1 / 2.414),
-		"x": 2.414,
-		"y": 1,
+		"dimensions": 2.414 1,
 	),
 
 	"5x3": (
 		"description": "5:3 - A common European widescreen standard",
-		"x": 5,
-		"y": 3,
+		"dimensions": 5 3,
 	),
 ) !default;

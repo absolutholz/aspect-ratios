@@ -1,7 +1,17 @@
-// No. 3 => https://engageinteractive.co.uk/blog/top-10-scss-mixins
-
-// set $pseudo to true because when flex-basis alone defines the parent
-// width, the padding hack does not work as expected
+///
+/// Create a box element with a fixed aspect ratio via the css padding-hack.
+///
+/// @link https://engageinteractive.co.uk/blog/top-10-scss-mixins No. 3
+///
+/// @group Aspect Ratios
+/// @author absolutholz
+///
+/// @param {Number} $x - The x (horizontal) value of the desired ratio
+/// @param {Number} $y - The y (vertical) value of the desired ratio
+/// @param {Bool} $pseudo [false] - Should the box be generated via a pseudo element.  Set this to true when flex-basis alone defines the parent width.
+///
+/// @output Padding-top value to create the desired aspect ratio, either nested directly under the parent selector or, optionally, as a before pseudo element.
+///
 @mixin aspect-ratio-box($x, $y, $pseudo: false) {
 	$padding: unquote(( $y / $x ) * 100 + "%");
 
