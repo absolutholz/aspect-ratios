@@ -16,6 +16,12 @@ function optimize (sourceFiles, destinationDirectory, cssnanoOptions = CSSNANO_O
 	return gulp.src(sourceFiles)
 		.pipe(packages.prettyError())
 
+		.pipe(packages.newer({
+			dest: destinationDirectory,
+			ext: '.min.css',
+			extra: sourceFiles,
+		}))
+
 		.pipe(packages.sourcemaps.init())
 
 		.pipe(postcss([
