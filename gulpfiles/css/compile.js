@@ -1,5 +1,4 @@
-const packages = require('../common-packages');
-const gulp = packages.gulp;
+const { gulp, prettyError, newer, sourcemaps, size } = require('../common-packages');
 
 const autoprefixer = require('autoprefixer'); // https://www.npmjs.com/package/autoprefixer
 const postcss = require('gulp-postcss'); // https://github.com/postcss/gulp-postcss
@@ -13,15 +12,15 @@ const SASS_OPTIONS = {
 
 function compile (sourceFiles, destinationDirectory, sassOptions = SASS_OPTIONS) {
 	return gulp.src(sourceFiles, { sourcemaps: true }) // gulp 4 sourcemaps: https://fettblog.eu/gulp-4-sourcemaps/
-		.pipe(packages.prettyError())
+		.pipe(prettyError())
 
-		.pipe(packages.newer({
+		.pipe(newer({
 			dest: destinationDirectory,
 			ext: '.css',
 			extra: sourceFiles,
 		}))
 
-		.pipe(packages.sourcemaps.init())
+		.pipe(sourcemaps.init())
 
 		.pipe(sassGlob())
 		.pipe(sass(sassOptions))
@@ -29,9 +28,9 @@ function compile (sourceFiles, destinationDirectory, sassOptions = SASS_OPTIONS)
 			autoprefixer(), // browserconfig in .browserslistrc
 		]))
 
-		.pipe(packages.sourcemaps.write('/'))
+		.pipe(sourcemaps.write('/'))
 
-		.pipe(packages.size({ showFiles: true, title: 'CSS Generated --->' })) // size before dest results in better output in the console
+		.pipe(size({ showFiles: true, title: 'CSS Generated --->' })) // size before dest results in better output in the console
 		.pipe(gulp.dest(destinationDirectory));
 };
 compile.description = 'Compile CSS from SCSS';

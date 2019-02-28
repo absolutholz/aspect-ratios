@@ -1,5 +1,4 @@
-const packages = require('../common-packages');
-const gulp = packages.gulp;
+const { gulp } = require('../common-packages');
 
 const sassLint = require('gulp-sass-lint'); // https://www.npmjs.com/package/gulp-sass-lint
 

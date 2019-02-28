@@ -1,5 +1,4 @@
-const packages = require('../common-packages');
-const gulp = packages.gulp;
+const { gulp, prettyError, newer, sourcemaps, size } = require('../common-packages');
 
 const cssnano = require('cssnano'); // https://www.npmjs.com/package/cssnano
 const postcss = require('gulp-postcss'); // https://github.com/postcss/gulp-postcss
@@ -14,15 +13,15 @@ const CSSNANO_OPTIONS = {
 
 function optimize (sourceFiles, destinationDirectory, cssnanoOptions = CSSNANO_OPTIONS) {
 	return gulp.src(sourceFiles)
-		.pipe(packages.prettyError())
+		.pipe(prettyError())
 
-		.pipe(packages.newer({
+		.pipe(newer({
 			dest: destinationDirectory,
 			ext: '.min.css',
 			extra: sourceFiles,
 		}))
 
-		.pipe(packages.sourcemaps.init())
+		.pipe(sourcemaps.init())
 
 		.pipe(postcss([
 			cssnano(cssnanoOptions),
@@ -31,9 +30,9 @@ function optimize (sourceFiles, destinationDirectory, cssnanoOptions = CSSNANO_O
             suffix: '.min'
         }))
 
-		.pipe(packages.sourcemaps.write('/'))
+		.pipe(sourcemaps.write('/'))
 
-		.pipe(packages.size({ showFiles: true, title: 'CSS Optimized --->' })) // size before dest results in better output in the console
+		.pipe(size({ showFiles: true, title: 'CSS Optimized --->' })) // size before dest results in better output in the console
 		.pipe(gulp.dest(destinationDirectory));
 };
 optimize.description = 'Minimize CSS';
