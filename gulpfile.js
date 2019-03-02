@@ -26,7 +26,9 @@ gulp.task('aspect-ratios:css:development', () => css.compile(FILES_SOURCE_CSS, D
 
 gulp.task('aspect-ratios:css:production', () => css.optimize(FILES_PRODUCTION_CSS, DIR_PRODUCTION_CSS));
 
-gulp.task('aspect-ratios:css', gulp.parallel('aspect-ratios:css:qa', gulp.series('aspect-ratios:css:development', 'aspect-ratios:css:production')));
+gulp.task('aspect-ratios:css:documentation', () => css.document(FILES_SOURCE_CSS));
+
+gulp.task('aspect-ratios:css', gulp.parallel('aspect-ratios:css:qa', gulp.parallel('aspect-ratios:css:documentation', gulp.series('aspect-ratios:css:development', 'aspect-ratios:css:production'))));
 
 /* ---------------------------------------- *\
    File Watchers

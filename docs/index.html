@@ -1,0 +1,85 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Aspect-ratios - v1.0.0</title><link rel="stylesheet" href="assets/css/main.css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700" rel="stylesheet" type="text/css"><meta name="viewport" content="width=device-width"><meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"><!-- Open Graph tags --><meta property="og:title" content="Aspect-ratios - SassDoc"><meta property="og:type" content="website"><meta property="og:description" content="<p>Tools and methodology for using CSS to create block elements for well-known aspect ratios.</p>
+"><!-- Thanks to Sass-lang.com for the icons --><link href="assets/images/favicon.png" rel="shortcut icon"></head><body><aside class="sidebar" role="nav"><div class="sidebar__header"><h1 class="sidebar__title"><a href="https://github.com/absolutholz/aspect-ratios#readme">Aspect-ratios - v1.0.0</a></h1></div><div class="sidebar__body"><button type="button" class="btn-toggle js-btn-toggle" data-alt="Open all">Close all</button><p class="sidebar__item sidebar__item--heading" data-slug="aspect ratios"><a href="#aspect ratios">aspect ratios</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="aspect ratios-css"><a href="#aspect ratios-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="aspect ratios" data-name=".aspect-ratio" data-type="css"><a href="#aspect ratios-css-.aspect-ratio">.aspect-ratio</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="aspect ratios-function"><a href="#aspect ratios-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="aspect ratios" data-name="create-ratio" data-type="function"><a href="#aspect ratios-function-create-ratio">create-ratio</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="aspect ratios-mixin"><a href="#aspect ratios-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="aspect ratios" data-name="aspect-ratio-box" data-type="mixin"><a href="#aspect ratios-mixin-aspect-ratio-box">aspect-ratio-box</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="aspect ratios-variable"><a href="#aspect ratios-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="aspect ratios" data-name="aspect-ratios" data-type="variable"><a href="#aspect ratios-variable-aspect-ratios">aspect-ratios</a></li></ul></div></div></aside><article class="main" role="main"><header class="header" role="banner"><div class="container"><div class="sassdoc__searchbar searchbar"><label for="js-search-input" class="visually-hidden">Search</label><div class="searchbar__form" id="js-search"><input name="search" type="search" class="searchbar__field" autocomplete="off" autofocus id="js-search-input" placeholder="Search"><ul class="searchbar__suggestions" id="js-search-suggestions"></ul></div></div></div></header><section class="main__section"><h1 class="main__heading" id="aspect ratios"><div class="container">aspect ratios</div></h1><section class="main__sub-section" id="aspect ratios-css"><h2 class="main__heading--secondary"><div class="container">css</div></h2><section class="main__item container item" id="aspect ratios-css-.aspect-ratio"><h3 class="item__heading"><a class="item__name" href="#css-.aspect-ratio">.aspect-ratio</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>.aspect-ratio {
+  @each $ratio-key, $ratio in $aspect-ratios {
+		&amp;--#{$ratio-key} {
+			@include aspect-ratio-box(nth(map-get($ratio, &quot;dimensions&quot;), 1), nth(map-get($ratio, &quot;dimensions&quot;), 2));
+		}
+	}
+}</code>" data-collapsed=".aspect-ratio { ... }"><code>.aspect-ratio { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Create classes with opinionated selector names</p></div><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>absolutholz</p></li></ul></section></section><section class="main__sub-section" id="aspect ratios-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="aspect ratios-function-create-ratio"><h3 class="item__heading"><a class="item__name" href="#function-create-ratio">create-ratio</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function create-ratio($dimensions, $description: &quot;&quot;, $key: &quot;&quot;) { 
+	@if ($key == &quot;&quot;) {
+		$key: &quot;#{nth($dimensions, 1)}x#{nth($dimensions, 2)}&quot;;
+	}
+
+	@return ($key: (
+		&quot;description&quot;: $description,
+		&quot;dimensions&quot;: $dimensions,
+	));
+ }" data-collapsed="@function create-ratio($dimensions, $description: &quot;&quot;, $key: &quot;&quot;) { ... }"><code>@function create-ratio($dimensions, $description: &quot;&quot;, $key: &quot;&quot;) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Create a ratio map. Ideally not one already defined in the $aspect-ratios variable</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$dimensions</code></th><td data-label="desc"><p>A list of x and y dimensions (ex: <code>1 1</code> or <code>16 9</code>)</p></td><td data-label="type"><code>List</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$description</code></th><td data-label="desc"><p>A brief description of the ratio</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>&quot;&quot;</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$key</code></th><td data-label="desc"><p>The key for the generated map (ex: &quot;1x1&quot; or &quot;16x9&quot;). If an empty or no string is passed, one will be generated from the dimensions in the format <code>&quot;[x]x[y]&quot;</code>.</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>&quot;&quot;</code></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Map</code> &mdash;<p><code>($key: (&quot;description&quot;: $description, &quot;dimensions&quot;: $dimensions))</code></p></div><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>absolutholz</p></li></ul></section></section><section class="main__sub-section" id="aspect ratios-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="aspect ratios-mixin-aspect-ratio-box"><h3 class="item__heading"><a class="item__name" href="#mixin-aspect-ratio-box">aspect-ratio-box</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin aspect-ratio-box($x, $y, $pseudo: false) { 
+	$padding: unquote(( $y / $x ) * 100 + &quot;%&quot;);
+
+	@if $pseudo {
+		// use before so that z-indexing is not required for simple layering
+		&amp;::before {
+			content: &quot;&quot;;
+			display: block;
+			padding-top: $padding;
+			width: 100%;
+		}
+	} @else {
+		padding-top: $padding;
+	}
+
+	position: relative;
+
+	@content;
+ }" data-collapsed="@mixin aspect-ratio-box($x, $y, $pseudo: false) { ... }"><code>@mixin aspect-ratio-box($x, $y, $pseudo: false) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Create a box element with a fixed aspect ratio via the css padding-hack.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$x</code></th><td data-label="desc"><p>The x (horizontal) value of the desired ratio</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$y</code></th><td data-label="desc"><p>The y (vertical) value of the desired ratio</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$pseudo</code></th><td data-label="desc"><p>Should the box be generated via a pseudo element. Set this to true when flex-basis alone defines the parent width.</p></td><td data-label="type"><code>Bool</code></td><td data-label="default"><code>false</code></td></tr></tbody></table><h3 class="item__sub-heading">Content</h3><p>This mixin allows extra content to be passed (through the <code>@content</code> directive).</p><h3 class="item__sub-heading">Output</h3><div class="item__description"><p>Padding-top value to create the desired aspect ratio, either nested directly under the parent selector or, optionally, as a before pseudo element.</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://engageinteractive.co.uk/blog/top-10-scss-mixins">No. 3</a></li></ul><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>absolutholz</p></li></ul></section></section><section class="main__sub-section" id="aspect ratios-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="aspect ratios-variable-aspect-ratios"><h3 class="item__heading"><a class="item__name" href="#variable-aspect-ratios">aspect-ratios</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$aspect-ratios: (
+	&quot;1x1&quot;: (
+		&quot;description&quot;: &quot;1:1 - Square; Used in some social networks, and in few devices&quot;,
+		&quot;dimensions&quot;: 1 1,
+	),
+
+	&quot;5x4&quot;: (
+		&quot;description&quot;: &quot;5:4 - Early television &amp; large-format computer monitors&quot;,
+		&quot;dimensions&quot;: 5 4,
+	),
+
+	&quot;4x3&quot;: (
+		&quot;description&quot;: &quot;4:3 - Traditional television &amp; computer monitor standard&quot;,
+		&quot;dimensions&quot;: 4 3,
+	),
+
+	&quot;11x8&quot;: (
+		&quot;description&quot;: &quot;11:8 - Academy standard film aspect ratio&quot;,
+		&quot;dimensions&quot;: 11 8,
+	),
+
+	&quot;3x2&quot;: (
+		&quot;description&quot;: &quot;3:2 - Classic 35 mm still photographic film&quot;,
+		&quot;dimensions&quot;: 3 2,
+	),
+
+	&quot;16x10&quot;: (
+		&quot;description&quot;: &quot;16:10 - A common computer screen ratio&quot;,
+		&quot;dimensions&quot;: 16 10,
+	),
+
+	&quot;16x9&quot;: (
+		&quot;description&quot;: &quot;16:9 - HD video standard&quot;,
+		&quot;dimensions&quot;: 16 9,
+	),
+
+	&quot;golden&quot;: (
+		&quot;description&quot;: &quot;1.618:1 - The golden ratio&quot;,
+		&quot;dimensions&quot;: 1.618 1,
+	),
+
+	&quot;silver&quot;: (
+		&quot;description&quot;: &quot;2.414:1 - The silver ratio&quot;,
+		&quot;dimensions&quot;: 2.414 1,
+	),
+
+	&quot;5x3&quot;: (
+		&quot;description&quot;: &quot;5:3 - A common European widescreen standard&quot;,
+		&quot;dimensions&quot;: 5 3,
+	),
+) !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Some standard apect ratios as defined on the linked wikipedia page</p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://en.wikipedia.org/wiki/Aspect_ratio_(image)">https://en.wikipedia.org/wiki/Aspect_ratio_(image)</a></li></ul><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>absolutholz</p></li></ul></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --> <a class="project-info__name" href="https://github.com/absolutholz/aspect-ratios#readme">Aspect-ratios</a><!-- Version --> <span class="project-info__version">- v1.0.0</span><!-- License --> <span class="project-info__license">, under GPL-3.0+</span></div><a class="footer__watermark" href="http://sassdoc.com"><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"></a></div></footer></article><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>
