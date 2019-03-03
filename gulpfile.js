@@ -43,6 +43,27 @@ gulp.task('aspect-ratios:watch', (done) => {
    Utility Tasks
 \* ---------------------------------------- */
 
+/**
+ * Server wrapper for syncing browser and device interaction. Additionally reloads the browser on file change.
+ *
+ * The browser options, used to open windows on starting the task, are user system dependent and can/will vary between
+ * different machines. A list of common installations that work on my windows 10 machine are as follows:
+ * 'google chrome', 'chrome', 'firefox', 'vivaldi', 'opera', 'iexplore'
+ *
+ * https://www.browsersync.io/docs/gulp/
+ * https://www.browsersync.io/docs/options/
+ */
+
+const browserSync = require('browser-sync').create();
+
+gulp.task('browser-sync', function() {
+	browserSync.init({
+		watch: true,
+		server: './docs',
+		open: false,
+	});
+});
+
 gulp.task('aspect-ratios', gulp.series('aspect-ratios:css'));
 
 module.exports = {

@@ -27,6 +27,7 @@
     "gulp-sourcemaps": "^2.6.5"
   },
   "devDependencies": {
+    "browser-sync": "^2.26.3",
     "gulp": "^4.0.0",
     "sassdoc": "^2.5.1"
   }
