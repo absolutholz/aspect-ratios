@@ -13,6 +13,7 @@ const DIR_PRODUCTION = './build';
 \* ---------------------------------------- */
 
 const css = require('./gulpfiles/css/all');
+const browserSync = require('./gulpfiles/browser-sync');
 
 const FILES_SOURCE_CSS = [`${DIR_SOURCE}/scss/**/*.scss`, `${DIR_SOURCE}/patterns/**/*.scss`];
 const DIR_DEVELOPMENT_CSS = `${DIR_DEVELOPMENT}/css`;
@@ -36,6 +37,7 @@ gulp.task('aspect-ratios:css', gulp.parallel('aspect-ratios:css:qa', gulp.parall
 
 gulp.task('aspect-ratios:watch', (done) => {
 	gulp.watch(FILES_SOURCE_CSS, gulp.series('aspect-ratios:css:development'));
+	gulp.watch(FILES_PRODUCTION_CSS, gulp.series('aspect-ratios:css:documentation'));
 	done();
 });
 
@@ -43,26 +45,12 @@ gulp.task('aspect-ratios:watch', (done) => {
    Utility Tasks
 \* ---------------------------------------- */
 
-/**
- * Server wrapper for syncing browser and device interaction. Additionally reloads the browser on file change.
- *
- * The browser options, used to open windows on starting the task, are user system dependent and can/will vary between
- * different machines. A list of common installations that work on my windows 10 machine are as follows:
- * 'google chrome', 'chrome', 'firefox', 'vivaldi', 'opera', 'iexplore'
- *
- * https://www.browsersync.io/docs/gulp/
- * https://www.browsersync.io/docs/options/
- */
+gulp.task('aspect-ratios:browser-sync', () => browserSync(Object.assign({}, browserSync.defaults.BROWSERSYNC_OPTIONS, {
+	server: './docs',
+	watch: false, // EPERM: operation not permitted
+})));
 
-const browserSync = require('browser-sync').create();
-
-gulp.task('browser-sync', function() {
-	browserSync.init({
-		watch: true,
-		server: './docs',
-		open: false,
-	});
-});
+gulp.task('aspect-ratios:develop', gulp.parallel('aspect-ratios:browser-sync', 'aspect-ratios:watch'));
 
 gulp.task('aspect-ratios', gulp.series('aspect-ratios:css'));
 
