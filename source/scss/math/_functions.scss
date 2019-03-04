@@ -1,0 +1,52 @@
+///
+/// Calculate the square root of a given number
+///
+/// @link http://www.antimath.info/css/sass-sqrt-function/
+///
+/// @group Math
+/// @author absolutholz
+///
+/// @param {Number} $base - Number to get the square root of
+///
+///	@return {Number} - The square root of the passed base number. *Note*: By default SASS computations are done with a precision of 5 decimals, if you need a higher precision use the “–precision N” (where N is the number of decimals) flag when compiling.
+///
+@function sqrt($base) {
+	$x0: 1;
+	$x1: $x0;
+
+	@for $i from 1 through 10 {
+		$x1: $x0 - ($x0 * $x0 - abs($base)) / (2 * $x0);
+		$x0: $x1;
+	}
+
+	@return $x1;
+}
+
+///
+/// Calculate the exponiation of a positive or negative integer
+///
+/// @link https://css-tricks.com/snippets/sass/power-function/#article-header-id-2
+///
+/// @group Math
+/// @author absolutholz
+///
+/// @param {Number} $base - Base number
+/// @param {Number} $exponent - Exponent
+///
+/// @return {Number} - The exponentiated result
+///
+@function pow($base, $exponent) {
+	$value: 1;
+
+	@if $exponent > 0 {
+		@for $i from 1 through $exponent {
+			$value: $value * $base;
+		}
+	} @else if $exponent < 0 {
+		@for $i from 1 through -$exponent {
+			$value: $value / $base;
+		}
+	}
+
+	@return $value;
+}
