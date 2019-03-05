@@ -1,0 +1,39 @@
+////
+/// See also Bootstrap 4 (beta) Reboot stack variables
+///
+/// @group Typography
+/// @author absolutholz
+///
+/// @type String | Number
+///
+/// @link https://css-tricks.com/almanac/properties/f/font-weight/
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight common font weight mappings
+///
+////
+
+///
+$typography-weight-hairline: 100 !default; // Thin (Hairline)
+
+///
+$typography-weight-extra-light: 200 !default; // Extra Light (Ultra Light)
+
+///
+$typography-weight-light: 300 !default; // Light
+
+///
+$typography-weight-normal: normal !default; // Normal
+
+///
+$typography-weight-medium: 500 !default; // Medium
+
+///
+$typography-weight-semi-bold: 600 !default; // Semi Bold (Demi Bold)
+
+///
+$typography-weight-bold: bold !default; // Bold
+
+///
+$typography-weight-extra-bold: 800 !default; // Extra Bold (Ultra Bold)
+
+///
+$typography-weight-black: 900 !default; // Black (Heavy)
