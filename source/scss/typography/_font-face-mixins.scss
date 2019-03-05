@@ -1,0 +1,60 @@
+@import "../string/string-functions";
+
+///
+/// Create a font face rule. For complete documentation follow the link.
+/// 	Format Support:
+/// 	https://socialcompare.com/en/comparison/browser-fonts-support-comparison
+/// 	http://transfonter.org/formats
+///
+/// @link https://gist.github.com/jonathantneal/d0460e5c2d5d7f9bc5e6
+///
+/// @group Typography
+/// @author jonathantneal
+///
+/// @param {String} $name - Name of `font-family`
+/// @param {String} $path - Path to font files
+/// @param {String|Number} $weight [null] - Associated `font-weight`. Defaults to `normal`
+/// @param {Style} $style [null] - Associated `font-style`. Defaults to `normal`
+/// @param {List} $exts [woff2 woff] - Available formats
+///
+/// @output The generated font-face declaration with all associated properties and file paths and formats
+///
+/// @example scss - SCSS usage
+///  @include font-face(Samplinal, fonts/Samplinal, 500, normal, eot woff2 woff);
+///
+/// @example css - CSS output
+///  @font-face {
+///  	font-family: "Samplinal";
+///  	font-style: normal;
+///  	font-weight: 500;
+///  	src: url("fonts/Samplinal.eot?") format("eot"),
+///  	     url("fonts/Samplinal.woff2") format("woff2"),
+///  	     url("fonts/Samplinal.woff") format("woff");
+///  }
+///
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: woff2 woff) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}

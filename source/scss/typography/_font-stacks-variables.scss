@@ -1,0 +1,24 @@
+////
+/// See also Bootstrap 4 (beta) Reboot stack variables
+///
+/// @group Typography
+/// @author bootstrap
+///
+/// @type List
+///
+/// @link https://www.cssfontstack.com/ Common font stacks
+/// @link https://css-tricks.com/snippets/css/system-font-stack/ Native font stacks (see the @font-face solution for better font-family mapping)
+///
+////
+
+/// Sans-serif
+$typography-family-sans-serif: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
+/// Serif
+$typography-family-serif: "Apple Garamond", Baskerville, "Times New Roman", "Droid Serif", Times, "Source Serif Pro", serif !default;
+
+/// Monospace
+$typography-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+
+/// Emoji
+$typography-family-native-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
