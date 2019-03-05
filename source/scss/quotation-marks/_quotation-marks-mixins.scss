@@ -1,0 +1,36 @@
+///
+/// Default base value for the quotes function. Should be the base language for the website.
+///
+/// @group Quotations
+/// @author absolutholz
+///
+/// @type String
+///
+$default-language: "en" !default;
+
+///
+/// Create CSS with language specific quotation marks.
+///
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/quotes
+///
+/// @group Quotations
+/// @author absolutholz
+///
+/// @param {Map} $languages [$default-language] - desired font size in px
+///
+/// @output CSS selector with corresponding `quotes` values
+///
+@mixin quotes ($languages: $default-language) {
+	@each $language in $languages {
+
+		@if map-has-key($quotation-marks, $language) {
+
+			[lang=#{$language}] {
+				quotes: map-get($quotation-marks, $language);
+			}
+
+		} @else {
+			@warn "Quotation mark settings not found for given language " $language;
+		}
+	}
+}
