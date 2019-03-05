@@ -1,0 +1,35 @@
+///
+/// Default base value for the rem-calc function. Should be the base font-size value.
+///
+/// @author absolutholz
+///
+/// @type String
+///
+$rem-calc-base: 16 !default;
+
+///
+/// Taken from Accessibility 101 - Developing for inclusivity
+///
+/// @link https://dev.to/jamesrweb/accessibility-101---developing-for-inclusivity-54d9
+///
+/// @author absolutholz
+///
+/// @example scss - SCSS usage
+///  p {
+///      font-size: rem-calc(18.75);
+///  }
+///
+/// @example css - CSS output
+///  p {
+///      font-size: 1.171875rem;
+///  }
+///
+/// @param {Number} $size - desired font size in px
+/// @param {Number} $base [16] - base font size in px
+///
+/// @return {String} - rem value representation of the desired px input
+///
+@function rem-calc($size, $base: $rem-calc-base) {
+	$rem-size: $size / $base;
+	@return $rem-size * 1rem;
+}
