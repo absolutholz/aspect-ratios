@@ -1,5 +1,5 @@
 ///
-/// Default base value for the rem-calc function. Should be the base font-size value.
+/// Default base value for the rem-calc function. Should be the page's base `font-size` value.
 ///
 /// @author absolutholz
 ///
@@ -8,9 +8,9 @@
 $rem-calc-base: 16 !default;
 
 ///
-/// Taken from Accessibility 101 - Developing for inclusivity
+/// Calculate `rem` values from `pixel` values. Optionally calculated against a custom base size.
 ///
-/// @link https://dev.to/jamesrweb/accessibility-101---developing-for-inclusivity-54d9
+/// @link https://dev.to/jamesrweb/accessibility-101---developing-for-inclusivity-54d9 Accessibility 101: Developing for inclusivity
 ///
 /// @author absolutholz
 ///
@@ -24,10 +24,10 @@ $rem-calc-base: 16 !default;
 ///      font-size: 1.171875rem;
 ///  }
 ///
-/// @param {Number} $size - desired font size in px
-/// @param {Number} $base [16] - base font size in px
+/// @param {Number} $size - desired size as pixel value without the `px` unit
+/// @param {Number} $base [$rem-calc-base] - base `font-size` as pixel value without the `px` unit
 ///
-/// @return {String} - rem value representation of the desired px input
+/// @return {String} - `rem` value representation of the desired `px` input
 ///
 @function rem-calc($size, $base: $rem-calc-base) {
 	$rem-size: $size / $base;
