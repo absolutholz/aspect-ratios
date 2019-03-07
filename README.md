@@ -1,6 +1,15 @@
-# aspect-ratios
-Tools and methodology for using CSS to create block elements for well-known aspect ratios.
+# Front-end Tooling Collection
 
-## Source Material
+This repository is a collection of helpful tools that I have found or created over the years. It is not necessarily a boilerplate, but could serve that purpose to some extent. I include it in other projects as a dependency
 
-[Wikipedia: Aspect ratio (image)](https://en.wikipedia.org/wiki/Aspect_ratio_(image))
+## Gulp
+
+Gulp functions that can be integrated into custom Gulp tasks as required by the project.
+
+## (S)CSS
+
+Mixins, functions, variables and generated CSS code. Documented via [SassDoc](http://sassdoc.com/)
+
+## JavaScript
+
+EcmaScript Modules documented via [JSDoc](http://usejsdoc.org/)
