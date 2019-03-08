@@ -1,4 +1,4 @@
-const { gulp } = require('./common-packages');
+const browserSync = require('browser-sync').create();
 
 /**
  * Server wrapper for syncing browser and device interaction. Additionally reloads the browser on file change.
@@ -11,20 +11,18 @@ const { gulp } = require('./common-packages');
  * https://www.browsersync.io/docs/options/
  */
 
-const browserSync = require('browser-sync').create();
-
 const BROWSERSYNC_OPTIONS = {
 	open: false,
 	server: './build',
 	watch: true,
 };
 
-function serve (browserSyncOptions = BROWSERSYNC_OPTIONS) {
+function serve(browserSyncOptions = BROWSERSYNC_OPTIONS) {
 	return browserSync.init(browserSyncOptions);
-};
+}
 serve.description = 'Start simple Browsersync server';
 serve.defaults = {
-	BROWSERSYNC_OPTIONS
+	BROWSERSYNC_OPTIONS,
 };
 
 module.exports = serve;

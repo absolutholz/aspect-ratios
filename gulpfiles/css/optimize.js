@@ -1,8 +1,8 @@
-const { gulp, prettyError, newer, sourcemaps, size } = require('../common-packages');
-
 const cssnano = require('cssnano'); // https://www.npmjs.com/package/cssnano
 const postcss = require('gulp-postcss'); // https://github.com/postcss/gulp-postcss
-const rename = require('gulp-rename'); // https://www.npmjs.com/package/gulp-rename
+
+/* eslint-disable-next-line object-curly-newline */
+const { gulp, prettyError, newer, rename, sourcemaps, size } = require('../common-packages');
 
 const CSSNANO_OPTIONS = {
 	reduceIdents: false,
@@ -11,7 +11,7 @@ const CSSNANO_OPTIONS = {
 	colormin: {},
 };
 
-function optimize (sourceFiles, destinationDirectory, cssnanoOptions = CSSNANO_OPTIONS) {
+function optimize(sourceFiles, destinationDirectory, cssnanoOptions = CSSNANO_OPTIONS) {
 	return gulp.src(sourceFiles)
 		.pipe(prettyError())
 
@@ -27,14 +27,14 @@ function optimize (sourceFiles, destinationDirectory, cssnanoOptions = CSSNANO_O
 			cssnano(cssnanoOptions),
 		]))
 		.pipe(rename({
-            suffix: '.min'
-        }))
+			suffix: '.min',
+		}))
 
 		.pipe(sourcemaps.write('/'))
 
 		.pipe(size({ showFiles: true, title: 'CSS Optimized --->' })) // size before dest results in better output in the console
 		.pipe(gulp.dest(destinationDirectory));
-};
+}
 optimize.description = 'Minimize CSS';
 optimize.defaults = {
 	CSSNANO_OPTIONS,
