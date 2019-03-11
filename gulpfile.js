@@ -32,7 +32,7 @@ gulp.task('fet:css:development:clean', () => clean(DIR_DEVELOPMENT_CSS));
 gulp.task('fet:css:production', () => css.optimize(FILES_PRODUCTION_CSS, DIR_PRODUCTION_CSS));
 gulp.task('fet:css:production:clean', () => clean(DIR_PRODUCTION_CSS));
 
-gulp.task('fet:css:documentation', () => css.document(FILES_SOURCE_CSS, Object.assign({}, css.document.defaults.SASSDOC_OPTIONS, { destination: DIR_DOCUMENTATION_CSS })));
+gulp.task('fet:css:documentation', () => css.document(FILES_SOURCE_CSS, Object.assign({}, css.document.defaults.SASSDOC_OPTIONS, { dest: DIR_DOCUMENTATION_CSS })));
 gulp.task('fet:css:documentation:clean', () => clean(DIR_DOCUMENTATION_CSS));
 
 gulp.task('fet:css', gulp.parallel('fet:css:qa', gulp.series('fet:css:documentation:clean', 'fet:css:documentation'), gulp.series(gulp.parallel('fet:css:development:clean', 'fet:css:production:clean'), 'fet:css:development', 'fet:css:production')));
