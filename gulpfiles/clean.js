@@ -18,6 +18,8 @@ const del = require('del'); // https://www.npmjs.com/package/del
 
 /**
  * Default npm del options
+ *
+ * @private
  */
 const DEL_OPTIONS = {};
 

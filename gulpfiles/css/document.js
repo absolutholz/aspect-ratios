@@ -19,7 +19,6 @@ const SASSDOC_OPTIONS = {
 };
 
 function document(sourceFiles, sassDocOptions = SASSDOC_OPTIONS) {
-	console.log(sassDocOptions);
 	return gulp.src(sourceFiles)
 		.pipe(prettyError())
 		.pipe(sassdoc(sassDocOptions));

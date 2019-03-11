@@ -58,7 +58,7 @@ gulp.task('fet:js:development:clean', () => clean(DIR_DEVELOPMENT_JS));
 gulp.task('fet:js:production', () => js.optimize(FILES_PRODUCTION_JS, DIR_PRODUCTION_JS));
 gulp.task('fet:js:production:clean', () => clean(DIR_PRODUCTION_JS));
 
-gulp.task('fet:js:documentation', () => js.document(FILES_SOURCE_JS, { destination: DIR_DOCUMENTATION_JS }));
+gulp.task('fet:js:documentation', () => js.document(FILES_SOURCE_JS, Object.assign({}, js.document.defaults.JSDOC_OPTIONS, { destination: DIR_DOCUMENTATION_JS })));
 gulp.task('fet:js:documentation:clean', () => clean(DIR_DOCUMENTATION_JS));
 
 gulp.task('fet:js', gulp.parallel('fet:js:qa', gulp.series('fet:js:documentation:clean', 'fet:js:documentation'), gulp.series(gulp.parallel('fet:js:development:clean', 'fet:js:production:clean'), 'fet:js:development', 'fet:js:production')));
@@ -77,7 +77,7 @@ gulp.task('fet:watch', (done) => {
    Utility Tasks
 \* ------------------------------------------------------------------------------------------------------------------------ */
 
-gulp.task('fet:gulp:documentation', cb => js.document('./gulpfiles/**/*.js', { destination: './docs/gulp' }, cb));
+gulp.task('fet:gulp:documentation', cb => js.document('./gulpfiles/**/*.js', Object.assign({}, js.document.defaults.JSDOC_OPTIONS, { destination: './docs/gulp' }), cb));
 gulp.task('fet:gulp:documentation:clean', () => clean('./docs/gulp'));
 
 gulp.task('fet:documentation', gulp.parallel('fet:gulp:documentation', 'fet:css:documentation', 'fet:js:documentation'));

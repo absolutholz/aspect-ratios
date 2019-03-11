@@ -4,6 +4,9 @@ const { gulp, prettyError } = require('../common-packages');
 
 const JSDOC_OPTIONS = {
 	destination: 'docs',
+	encoding: 'utf8',
+	private: true,
+	recurse: true,
 };
 
 function document(sourceFiles, jsDocOptions = JSDOC_OPTIONS, callbackFunction = () => { }) {

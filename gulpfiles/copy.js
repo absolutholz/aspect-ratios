@@ -16,11 +16,15 @@ const { gulp, prettyError } = require('./common-packages');
 
 /**
  * Default gulp.src options
+ *
+ * @private
  */
 const SRC_OPTIONS = {};
 
 /**
  * Default gulp.dest options
+ *
+ * @private
  */
 const DEST_OPTIONS = {};
 
