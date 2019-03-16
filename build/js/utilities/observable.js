@@ -5,24 +5,25 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Observable = Observable;
 
-/*
-	# Observer(able) Pattern
-
-	## Helpful Links
-	- [Understanding Observables in JavaScript - Part#1: Observer Pattern](http://anasfirdousi.com/understanding-observable-patterns-behind-observables-rxjs-rx.html)
-*/
+/**
+ * Observer(able) Pattern
+ *
+ * Helpful Links
+ * - [Understanding Observables in JavaScript - Part#1: Observer Pattern](http://anasfirdousi.com/understanding-observable-patterns-behind-observables-rxjs-rx.html)
+ *
+ * Observer object MUST have a public 'update' method which is called by the Observable's notify function.
+ * @example
+ *  ObservableObject.addObserver({
+ *  	update: (payload) => {
+ *  		// handle payload
+ *  	},
+ *  });
+ */
 function Observable() {
   var observers = [];
   /*
-  	Observer object MUST have a public 'update' method which is called
-  	by the Observable's notify function.
-  	Example:
-  		ObservableObject.addObserver({
-  			update: (payload) => {
-  				// handle payload
-  			},
-  		});
-  */
+  		Example:
+  	*/
 
   var subscribe = function addObserver(observer) {
     observers.push(observer);
