@@ -1,6 +1,6 @@
 const sassdoc = require('sassdoc'); // http://sassdoc.com/
 
-const { gulp, prettyError } = require('../common-packages');
+const { gulp, notify } = require('../common-packages');
 
 const SASSDOC_OPTIONS = {
 	dest: 'docs',
@@ -20,8 +20,8 @@ const SASSDOC_OPTIONS = {
 
 function document(sourceFiles, sassDocOptions = SASSDOC_OPTIONS) {
 	return gulp.src(sourceFiles)
-		.pipe(prettyError())
-		.pipe(sassdoc(sassDocOptions));
+		.pipe(sassdoc(sassDocOptions))
+		.pipe(notify({ message: 'CSS documentation complete', onLast: true }));
 }
 document.description = 'Create SassDoc documentation';
 document.defaults = {

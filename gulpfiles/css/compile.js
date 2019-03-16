@@ -4,7 +4,7 @@ const sass = require('gulp-sass'); // https://www.npmjs.com/package/gulp-sass
 const sassGlob = require('gulp-sass-glob'); // https://www.npmjs.com/package/gulp-sass-glob
 
 /* eslint-disable-next-line object-curly-newline */
-const { gulp, prettyError, newer, sourcemaps, size } = require('../common-packages');
+const { gulp, newer, notify, sourcemaps, size } = require('../common-packages');
 
 const SASS_OPTIONS = {
 	style: 'expanded',
@@ -12,9 +12,8 @@ const SASS_OPTIONS = {
 };
 
 function compile(sourceFiles, destinationDirectory, sassOptions = SASS_OPTIONS) {
+	// gulp prefixer?
 	return gulp.src(sourceFiles, { sourcemaps: true }) // gulp 4 sourcemaps: https://fettblog.eu/gulp-4-sourcemaps/
-		.pipe(prettyError())
-
 		.pipe(newer({
 			dest: destinationDirectory,
 			ext: '.css',
@@ -32,7 +31,8 @@ function compile(sourceFiles, destinationDirectory, sassOptions = SASS_OPTIONS) 
 		.pipe(sourcemaps.write('/'))
 
 		.pipe(size({ showFiles: true, title: 'CSS Generated --->' })) // size before dest results in better output in the console
-		.pipe(gulp.dest(destinationDirectory));
+		.pipe(gulp.dest(destinationDirectory))
+		.pipe(notify({ message: 'CSS compilation complete', onLast: true }));
 }
 compile.description = 'Compile CSS from SCSS';
 compile.defaults = {

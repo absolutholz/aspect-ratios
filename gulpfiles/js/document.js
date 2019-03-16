@@ -1,6 +1,6 @@
 const jsdoc = require('gulp-jsdoc3'); // https://www.npmjs.com/package/gulp-jsdoc3
 
-const { gulp, prettyError } = require('../common-packages');
+const { gulp, notify } = require('../common-packages');
 
 const JSDOC_OPTIONS = {
 	destination: 'docs',
@@ -11,7 +11,6 @@ const JSDOC_OPTIONS = {
 
 function document(sourceFiles, jsDocOptions = JSDOC_OPTIONS, callbackFunction = () => { }) {
 	return gulp.src(sourceFiles)
-		.pipe(prettyError())
 		.pipe(jsdoc(
 			{
 				opts: jsDocOptions,
@@ -20,7 +19,8 @@ function document(sourceFiles, jsDocOptions = JSDOC_OPTIONS, callbackFunction = 
 				],
 			},
 			callbackFunction,
-		));
+		))
+		.pipe(notify({ message: 'JS documentation complete', onLast: true }));
 }
 document.description = 'Create JSDoc documentation';
 document.defaults = {

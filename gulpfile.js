@@ -2,14 +2,14 @@
 	General Setup
 \* ------------------------------------------------------------------------------------------------------------------------ */
 
-const gulp = require('gulp');
-
 const DIR_SOURCE = './source';
 const DIR_DEVELOPMENT = './build';
 const DIR_PRODUCTION = './build';
 
+const { gulp } = require('./gulpfiles/common-packages');
 const clean = require('./gulpfiles/clean');
-const copy = require('./gulpfiles/copy');
+// const copy = require('./gulpfiles/copy');
+require('./gulpfiles/src-with-error-handling');
 
 /* ------------------------------------------------------------------------------------------------------------------------ *\
    CSS Tasks

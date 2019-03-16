@@ -1,7 +1,7 @@
 const babel = require('gulp-babel'); // https://www.npmjs.com/package/gulp-babel
 
 /* eslint-disable-next-line object-curly-newline */
-const { gulp, prettyError, newer, sourcemaps, size } = require('../common-packages');
+const { gulp, newer, notify, sourcemaps, size } = require('../common-packages');
 
 const BABEL_PRESETS = [
 	[
@@ -16,8 +16,6 @@ const BABEL_PLUGINS = [
 
 function transpile(sourceFiles, destinationDirectory, babelPresets = BABEL_PRESETS, babelPlugins = BABEL_PLUGINS) {
 	return gulp.src(sourceFiles, { sourcemaps: true }) // gulp 4 sourcemaps: https://fettblog.eu/gulp-4-sourcemaps/
-		.pipe(prettyError())
-
 		.pipe(newer({
 			dest: destinationDirectory,
 		}))
@@ -34,7 +32,8 @@ function transpile(sourceFiles, destinationDirectory, babelPresets = BABEL_PRESE
 		.pipe(sourcemaps.write('/'))
 
 		.pipe(size({ showFiles: true, title: 'JS Generated --->' })) // size before dest results in better output in the console
-		.pipe(gulp.dest(destinationDirectory));
+		.pipe(gulp.dest(destinationDirectory))
+		.pipe(notify({ message: 'JS transpilation complete', onLast: true }));
 }
 transpile.description = 'Transpile ECMAScript code to JS';
 transpile.defaults = {
