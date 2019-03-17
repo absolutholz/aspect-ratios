@@ -1,0 +1,17 @@
+// Reboot the horizontal rule
+
+// optionally append @content block to <hr> selector
+// Bootstrap 4 (beta) Reboot & Normalize 7.0.0
+
+// Content grouping
+
+// BS1. Add the correct box sizing in Firefox.
+// BD2. Show the overflow in Edge and IE.
+
+// HTML5 Boilerplate
+// restyles the element, which is unintersting for me, but also sets display: block. I am not sure when this might be necessary
+hr {
+	box-sizing: content-box; // 1
+	height: 0; // 1
+	overflow: visible; // 2
+}

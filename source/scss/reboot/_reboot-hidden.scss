@@ -1,0 +1,7 @@
+// Reboot elements with the hidden attribute
+// Bootstrap 4 (beta) Reboot & Normalize 7.0.0
+// BS: Always hide an element with the `hidden` HTML attribute (from PureCSS).
+// N: Needed for proper display in IE 10-.
+[hidden] {
+	display: none; // BS adds !important, but I don't want that since I may want to hide it differently for animations
+}

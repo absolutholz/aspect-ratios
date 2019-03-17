@@ -1,0 +1,43 @@
+// Reboot HTML5 elements
+
+$reboot-html5-block-elements: (article, aside, details, dialog, figcaption, figure, footer, header, main, menu, nav, section) !default;
+$reboot-html5-output-element: true !default;
+$reboot-html5-summary-element: true !default;
+$reboot-html5-template-element: true !default;
+
+// Bootstrap 4 (beta) Reboot
+// Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
+
+// Normalize 7.0.0
+// doesn't include dialog or hgroup (not a thing anymore). main, figcaption, figure, details and menu are included under a separate selector
+
+// RESET 2.0
+// adds details and menu, but also includes hgroup
+%normalize-html5-block-elements {
+	display: block;
+}
+
+@each $block-element in $reboot-html5-block-elements {
+	#{$block-element} {
+		@extend %normalize-html5-block-elements;
+	}
+}
+
+// Correct element displays
+@if $reboot-html5-output-element {
+	output {
+		display: inline-block; // BS
+	}
+}
+
+@if $reboot-html5-summary-element {
+	summary {
+		display: list-item; // BS & N: Add the correct display in all browsers
+	}
+}
+
+@if $reboot-html5-template-element {
+	template {
+		display: none; // BS & N Add the correct display in IE
+	}
+}

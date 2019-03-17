@@ -1,0 +1,91 @@
+// Reboot (mostly inline) typographical elements
+// Bootstrap 4 (beta) Reboot
+// BS1. Remove the bottom border in Firefox 39-.
+// BS2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+// BS3. Add explicit cursor to indicate changed behavior.
+
+// Normalize 7.0.0
+// N1. Remove the bottom border in Chrome 57- and Firefox 39-.
+// N2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+abbr {
+	&[title] {
+		border-bottom: 0; // BS1, N1
+		cursor: help; // BS3
+		text-decoration: underline; // BS2, N2
+		// sass-lint:disable no-duplicate-properties
+		text-decoration: underline dotted; // BS2, N2
+	}
+}
+
+// From Bootstrap, but without the margin reset
+address {
+	font-style: normal;
+	line-height: inherit;
+}
+
+// Bootstrap 4 Reboot and Normalize include audio and video fixes for IE 9- and iOS 4-7, but I have no need to support those
+
+// Couldn't find any good rules for lists (ol, ul, dl) aside from margin and padding resets. One possibility for inclusion is the margin reset for nested lists.
+
+// No rules for blockquote other than margin resets
+
+// BS1, N1. Correct the inheritance and scaling of font size in all browsers.
+// BS2, N2. Correct the odd `em` font sizing in all browsers.
+
+// stylelint-disable font-family-no-duplicate-names
+pre, // preformatted - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre
+code, // computer code - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code
+kbd, // keyboard (user input) - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd
+samp { // sample output - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp
+	font-family: monospace, monospace; // BS1, N1
+	font-size: 1em; // BS2
+}
+// stylelint-enable font-family-no-duplicate-names
+
+// BS1. Don't allow content to break outside
+// BS2. We have @viewport set which causes scrollbars to overlap content in IE11 and Edge, so we force a non-overlapping, non-auto-hiding scrollbar to counteract.
+// sass-lint:disable property-sort-order no-vendor-prefixes
+pre {
+	overflow: auto; // BS1
+	-ms-overflow-style: scrollbar; // BS2
+}
+
+dfn {
+	font-style: italic; // Bootstrap & Normalize: Add the correct font style in Android 4.3-
+}
+
+// Normalize has a fix for a Safari 6 problem, but version 7 was realeased in 2013, so screw 6
+
+// stylelint-disable font-weight-notation
+b,
+strong {
+	font-weight: bolder; // Bootstrap & Normalize: Add the correct font weight in Chrome, Edge, and Safari
+}
+// stylelint-enable font-weight-notation
+
+small {
+	font-size: 80%; // Bootstrap & Normalize: Add the correct font size in all browsers
+}
+
+// only normalize has a rule for mark, and it is for IE 9-
+
+// Bootstrap 4 Reboot & Normalize
+
+// Prevent `sub` and `sup` elements from affecting the line height in
+// all browsers.
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}

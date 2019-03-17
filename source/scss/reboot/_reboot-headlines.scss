@@ -1,0 +1,9 @@
+// most of the headline and paragraph normalization/reset rules simply set the base margins, sometimes, as is the case in Bootstrap, by setting (optionally) the margins to rem units instead of em
+
+// Reboot headline elements
+// Normalize 7.0.0
+// Correct the font size and margin on `h1` elements within `section` and
+// `article` contexts in Chrome, Firefox, and Safari.
+h1 {
+	font-size: 2em;
+}
