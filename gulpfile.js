@@ -8,7 +8,7 @@ const DIR_PRODUCTION = './build';
 
 const { gulp } = require('./gulpfiles/common-packages');
 const clean = require('./gulpfiles/clean');
-// const copy = require('./gulpfiles/copy');
+const copy = require('./gulpfiles/copy');
 require('./gulpfiles/src-with-error-handling');
 
 /* ------------------------------------------------------------------------------------------------------------------------ *\
@@ -62,6 +62,23 @@ gulp.task('fet:js:documentation', () => js.document(FILES_SOURCE_JS, Object.assi
 gulp.task('fet:js:documentation:clean', () => clean(DIR_DOCUMENTATION_JS));
 
 gulp.task('fet:js', gulp.parallel('fet:js:qa', gulp.series('fet:js:documentation:clean', 'fet:js:documentation'), gulp.series(gulp.parallel('fet:js:development:clean', 'fet:js:production:clean'), 'fet:js:development', 'fet:js:production')));
+
+/* ------------------------------------------------------------------------------------------------------------------------ *\
+   SVG Tasks
+\* ------------------------------------------------------------------------------------------------------------------------ */
+
+const svg = require('./gulpfiles/svg/all');
+
+const FILES_SOURCE_SVG_ICONS = 'node_modules/@mdi/svg/svg/**/*.svg';
+const DIR_DEVELOPMENT_SVG_ICONS = `${DIR_DEVELOPMENT}/icons`;
+const FILES_DEVELOPMENT_SVG_ICONS = `${DIR_DEVELOPMENT_SVG_ICONS}/**/*.svg`;
+const DIR_PRODUCTION_SVG_ICONS = `${DIR_PRODUCTION}/icons`;
+
+// const sIconNames = require(`../../${SOURCE_DIR_NAME}/${PATTERNS_DIR_NAME}/02-simple/00-atoms/iconography/external-sprite/external-sprite-selected-icons.json`).toString();
+// `${ICONS_BUILD_DIR}/{${sIconNames}}.svg`
+
+gulp.task('fet:svg:development', () => svg.sprite(FILES_SOURCE_SVG_ICONS, DIR_DEVELOPMENT_SVG_ICONS));
+gulp.task('fet:svg:production', () => copy(FILES_DEVELOPMENT_SVG_ICONS, DIR_PRODUCTION_SVG_ICONS));
 
 /* ------------------------------------------------------------------------------------------------------------------------ *\
    File Watchers
