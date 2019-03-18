@@ -81,6 +81,20 @@ gulp.task('fet:svg:development', () => svg.sprite(FILES_SOURCE_SVG_ICONS, DIR_DE
 gulp.task('fet:svg:production', () => copy(FILES_DEVELOPMENT_SVG_ICONS, DIR_PRODUCTION_SVG_ICONS));
 
 /* ------------------------------------------------------------------------------------------------------------------------ *\
+   Media Tasks
+\* ------------------------------------------------------------------------------------------------------------------------ */
+
+const media = require('./gulpfiles/media/all');
+
+const FILES_SOURCE_MEDIA = `${DIR_SOURCE}/media/**/*.{svg,png,jpg,jpeg,gif}`;
+const DIR_DEVELOPMENT_MEDIA = `${DIR_DEVELOPMENT}/media`;
+const FILES_DEVELOPMENT_MEDIA = `${DIR_DEVELOPMENT_MEDIA}/**/*`;
+const DIR_PRODUCTION_MEDIA = `${DIR_PRODUCTION}/media`;
+
+gulp.task('fet:media:development', () => gulp.parallel(media.sprite(FILES_SOURCE_MEDIA, DIR_DEVELOPMENT_MEDIA), media.webp(FILES_SOURCE_MEDIA, DIR_DEVELOPMENT_MEDIA));
+gulp.task('fet:media:production', () => copy(FILES_DEVELOPMENT_MEDIA, DIR_PRODUCTION_MEDIA));
+
+/* ------------------------------------------------------------------------------------------------------------------------ *\
    File Watchers
 \* ------------------------------------------------------------------------------------------------------------------------ */
 
