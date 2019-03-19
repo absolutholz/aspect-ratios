@@ -1,6 +1,6 @@
 const extReplace = require('gulp-ext-replace');
 const imagemin = require('gulp-imagemin');
-const webp = require('imagemin-webp');
+const imageminWebp = require('imagemin-webp');
 
 const { gulp, notify, size } = require('../common-packages');
 
@@ -8,11 +8,11 @@ const IMAGEMIN_WEBP_OPTIONS = {
 	quality: 100,
 };
 
-function wepb(sourceFiles, destinationDirectory, imageminWebpOptions = IMAGEMIN_WEBP_OPTIONS) {
-	gulp.src(sourceFiles)
+function webp(sourceFiles, destinationDirectory, imageminWebpOptions = IMAGEMIN_WEBP_OPTIONS) {
+	return gulp.src(sourceFiles)
 
 		.pipe(imagemin([
-			webp(imageminWebpOptions),
+			imageminWebp(imageminWebpOptions),
 		]))
 		.pipe(extReplace('.webp'))
 
@@ -20,9 +20,9 @@ function wepb(sourceFiles, destinationDirectory, imageminWebpOptions = IMAGEMIN_
 		.pipe(gulp.dest(destinationDirectory))
 		.pipe(notify({ message: 'WEBP Media created', onLast: true }));
 }
-wepb.description = 'Create WEBP Media files from source files of other formats';
-wepb.defaults = {
+webp.description = 'Create WEBP Media files from source files of other formats';
+webp.defaults = {
 	IMAGEMIN_WEBP_OPTIONS,
 };
 
-module.exports = wepb;
+module.exports = webp;

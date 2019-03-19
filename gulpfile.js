@@ -69,7 +69,7 @@ gulp.task('fet:js', gulp.parallel('fet:js:qa', gulp.series('fet:js:documentation
 
 const svg = require('./gulpfiles/svg/all');
 
-const FILES_SOURCE_SVG_ICONS = 'node_modules/@mdi/svg/svg/**/*.svg';
+const FILES_SOURCE_SVG_ICONS = `${DIR_SOURCE}/icons/**/*.svg`;
 const DIR_DEVELOPMENT_SVG_ICONS = `${DIR_DEVELOPMENT}/icons`;
 const FILES_DEVELOPMENT_SVG_ICONS = `${DIR_DEVELOPMENT_SVG_ICONS}/**/*.svg`;
 const DIR_PRODUCTION_SVG_ICONS = `${DIR_PRODUCTION}/icons`;
@@ -86,12 +86,15 @@ gulp.task('fet:svg:production', () => copy(FILES_DEVELOPMENT_SVG_ICONS, DIR_PROD
 
 const media = require('./gulpfiles/media/all');
 
-const FILES_SOURCE_MEDIA = `${DIR_SOURCE}/media/**/*.{svg,png,jpg,jpeg,gif}`;
+const FILES_SOURCE_MEDIA = `${DIR_SOURCE}/icons/**/*.{svg,png,jpg,jpeg,gif}`;
 const DIR_DEVELOPMENT_MEDIA = `${DIR_DEVELOPMENT}/media`;
 const FILES_DEVELOPMENT_MEDIA = `${DIR_DEVELOPMENT_MEDIA}/**/*`;
 const DIR_PRODUCTION_MEDIA = `${DIR_PRODUCTION}/media`;
 
-gulp.task('fet:media:development', () => gulp.parallel(media.sprite(FILES_SOURCE_MEDIA, DIR_DEVELOPMENT_MEDIA), media.webp(FILES_SOURCE_MEDIA, DIR_DEVELOPMENT_MEDIA));
+gulp.task('fet:media:development:clean', () => clean(DIR_DEVELOPMENT_MEDIA));
+gulp.task('fet:media:development:optimize', () => media.optimize(FILES_SOURCE_MEDIA, DIR_DEVELOPMENT_MEDIA));
+gulp.task('fet:media:development:webp', () => media.webp(FILES_SOURCE_MEDIA, DIR_DEVELOPMENT_MEDIA));
+gulp.task('fet:media:development', gulp.series('fet:media:development:clean', gulp.parallel('fet:media:development:optimize', 'fet:media:development:webp')));
 gulp.task('fet:media:production', () => copy(FILES_DEVELOPMENT_MEDIA, DIR_PRODUCTION_MEDIA));
 
 /* ------------------------------------------------------------------------------------------------------------------------ *\
